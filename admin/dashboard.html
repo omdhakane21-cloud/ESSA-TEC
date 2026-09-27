@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | ESSA</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <h2>ESSA Admin</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
+      <li><a href="events.html">📅 Manage Events</a></li>
+      <li><a href="team.html">👥 Manage Team</a></li>
+      <li><a href="gallery.html">🖼️ Manage Gallery</a></li>
+      <li><a href="coordinators.html">📞 Coordinators Help Desk</a></li>
+      <li><a href="registrations.html">📝 Registrations</a></li>
+      <li><a href="messages.html">💬 Contact Messages</a></li>
+      <li style="margin-top: 30px;"><a href="../index.html" target="_blank">🌐 Live Website</a></li>
+      <li><a href="#" onclick="logoutAdmin()">🚪 Sign Out</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <h3>ESSA Control Center - Terna Engineering College</h3>
+      <span id="adminGreeting" style="font-weight: 600;">Welcome, Administrator</span>
+    </header>
+
+    <div class="admin-content">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4>Total Events</h4>
+          <div class="val" id="statEvents">--</div>
+        </div>
+        <div class="stat-card">
+          <h4>Team Members</h4>
+          <div class="val" id="statTeam">--</div>
+        </div>
+        <div class="stat-card">
+          <h4>Event Registrations</h4>
+          <div class="val" id="statRegs">--</div>
+        </div>
+        <div class="stat-card">
+          <h4>Unread Inquiries</h4>
+          <div class="val" id="statMsgs">--</div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3>Quick Management Shortcuts</h3>
+        </div>
+        <p style="color: #64748B; margin-bottom: 20px;">Use the dedicated sections on the sidebar to add workshops, upload project photographs, update committee posts, or edit coordinator phone numbers in the footer strip.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="events.html" class="btn-card" style="padding: 10px 16px;">Add New Event</a>
+          <a href="team.html" class="btn-card" style="padding: 10px 16px;">Add Committee Member</a>
+          <a href="gallery.html" class="btn-card" style="padding: 10px 16px;">Upload Gallery Photos</a>
+          <a href="coordinators.html" class="btn-card" style="padding: 10px 16px;">Edit Bottom Strip Contacts</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/admin.js"></script>
+  <script>
+    checkAuth();
+    loadDashboardStats();
+  </script>
+</body>
+</html>

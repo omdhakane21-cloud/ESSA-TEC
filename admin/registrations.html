@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Registrations | ESSA Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar">
+    <div class="admin-brand"><h2>ESSA Admin</h2></div>
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html">📊 Dashboard</a></li>
+      <li><a href="events.html">📅 Manage Events</a></li>
+      <li><a href="team.html">👥 Manage Team</a></li>
+      <li><a href="gallery.html">🖼️ Manage Gallery</a></li>
+      <li><a href="coordinators.html">📞 Coordinators Help Desk</a></li>
+      <li><a href="registrations.html" class="active">📝 Registrations</a></li>
+      <li><a href="messages.html">💬 Contact Messages</a></li>
+      <li style="margin-top: 30px;"><a href="../index.html" target="_blank">🌐 Live Website</a></li>
+      <li><a href="#" onclick="logoutAdmin()">🚪 Sign Out</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <h3>Student Event Registrations</h3>
+      <button class="btn-card" onclick="exportRegistrationsCSV()">Export to CSV</button>
+    </header>
+
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Year & Roll</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminRegTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/admin.js"></script>
+  <script>
+    checkAuth();
+    loadAdminRegistrations();
+  </script>
+</body>
+</html>

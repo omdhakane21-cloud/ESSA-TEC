@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Team | ESSA Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar">
+    <div class="admin-brand"><h2>ESSA Admin</h2></div>
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html">📊 Dashboard</a></li>
+      <li><a href="events.html">📅 Manage Events</a></li>
+      <li><a href="team.html" class="active">👥 Manage Team</a></li>
+      <li><a href="gallery.html">🖼️ Manage Gallery</a></li>
+      <li><a href="coordinators.html">📞 Coordinators Help Desk</a></li>
+      <li><a href="registrations.html">📝 Registrations</a></li>
+      <li><a href="messages.html">💬 Contact Messages</a></li>
+      <li style="margin-top: 30px;"><a href="../index.html" target="_blank">🌐 Live Website</a></li>
+      <li><a href="#" onclick="logoutAdmin()">🚪 Sign Out</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <h3>Manage Mentors & Committee Members</h3>
+      <button class="btn-card" onclick="openAddTeamModal()">+ Add Team Member</button>
+    </header>
+
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Role / Post</th>
+                <th>Category</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminTeamTable">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="teamModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeTeamModal()">&times;</button>
+      <h3 style="color: var(--maroon); margin-bottom: 16px;">Add / Edit Member</h3>
+      <form id="adminTeamForm">
+        <input type="hidden" id="editTeamId">
+        <div class="form-group">
+          <label>Member Name</label>
+          <input type="text" id="tmName" class="form-control" required placeholder="e.g. Aryan Shinde">
+        </div>
+        <div class="form-group">
+          <label>Role / Post</label>
+          <input type="text" id="tmRole" class="form-control" required placeholder="e.g. President / Vice President">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="tmCategory" class="form-control">
+            <option value="mentor">Mentor / Faculty</option>
+            <option value="core">Core Committee</option>
+            <option value="coordinator">Student Coordinator</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Photo URL</label>
+          <input type="text" id="tmPhoto" class="form-control" placeholder="https://images.unsplash.com/...">
+        </div>
+        <div class="form-group">
+          <label>LinkedIn Profile</label>
+          <input type="text" id="tmLinkedin" class="form-control" placeholder="https://linkedin.com/in/...">
+        </div>
+        <div class="form-group">
+          <label>Instagram Handle</label>
+          <input type="text" id="tmInstagram" class="form-control" placeholder="https://instagram.com/...">
+        </div>
+        <button type="submit" class="btn-card" style="width: 100%; border: none; cursor: pointer; padding: 10px;">Save Member</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+  <script>
+    checkAuth();
+    loadAdminTeam();
+  </script>
+</body>
+</html>

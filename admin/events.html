@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Events | ESSA Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar">
+    <div class="admin-brand"><h2>ESSA Admin</h2></div>
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html">📊 Dashboard</a></li>
+      <li><a href="events.html" class="active">📅 Manage Events</a></li>
+      <li><a href="team.html">👥 Manage Team</a></li>
+      <li><a href="gallery.html">🖼️ Manage Gallery</a></li>
+      <li><a href="coordinators.html">📞 Coordinators Help Desk</a></li>
+      <li><a href="registrations.html">📝 Registrations</a></li>
+      <li><a href="messages.html">💬 Contact Messages</a></li>
+      <li style="margin-top: 30px;"><a href="../index.html" target="_blank">🌐 Live Website</a></li>
+      <li><a href="#" onclick="logoutAdmin()">🚪 Sign Out</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <h3>Manage Upcoming & Past Events</h3>
+      <button class="btn-card" onclick="openAddEventModal()">+ Create New Event</button>
+    </header>
+
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date & Time</th>
+                <th>Venue</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminEventsTable">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit Event Modal -->
+  <div class="modal-overlay" id="eventModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeEventModal()">&times;</button>
+      <h3 id="modalEventTitle" style="color: var(--maroon); margin-bottom: 16px;">Add Event</h3>
+      <form id="adminEventForm">
+        <input type="hidden" id="editEventId">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="evTitle" class="form-control" required placeholder="Event Name">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="evCat" class="form-control">
+            <option value="Workshop">Workshop</option>
+            <option value="Competition">Competition / Hackathon</option>
+            <option value="Seminar">Seminar / Guest Lecture</option>
+            <option value="Technical Fest">Technical Fest</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date String</label>
+          <input type="text" id="evDate" class="form-control" required placeholder="e.g. Oct 15 - 16, 2026">
+        </div>
+        <div class="form-group">
+          <label>Venue</label>
+          <input type="text" id="evVenue" class="form-control" required placeholder="e.g. Lab 402, Electronics Dept">
+        </div>
+        <div class="form-group">
+          <label>Photo URL</label>
+          <input type="text" id="evImage" class="form-control" placeholder="https://images.unsplash.com/...">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="evDesc" class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn-card" style="width: 100%; border: none; cursor: pointer; padding: 10px;">Save Event</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+  <script>
+    checkAuth();
+    loadAdminEvents();
+  </script>
+</body>
+</html>

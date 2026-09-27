@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Gallery | ESSA Admin</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar">
+    <div class="admin-brand"><h2>ESSA Admin</h2></div>
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html">📊 Dashboard</a></li>
+      <li><a href="events.html">📅 Manage Events</a></li>
+      <li><a href="team.html">👥 Manage Team</a></li>
+      <li><a href="gallery.html" class="active">🖼️ Manage Gallery</a></li>
+      <li><a href="coordinators.html">📞 Coordinators Help Desk</a></li>
+      <li><a href="registrations.html">📝 Registrations</a></li>
+      <li><a href="messages.html">💬 Contact Messages</a></li>
+      <li style="margin-top: 30px;"><a href="../index.html" target="_blank">🌐 Live Website</a></li>
+      <li><a href="#" onclick="logoutAdmin()">🚪 Sign Out</a></li>
+    </ul>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <h3>Manage Gallery Photographs</h3>
+      <button class="btn-card" onclick="openAddGalleryModal()">+ Upload / Add Photo</button>
+    </header>
+
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Thumbnail</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminGalleryTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="galleryModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeGalleryModal()">&times;</button>
+      <h3 style="color: var(--maroon); margin-bottom: 16px;">Add Photo to Gallery</h3>
+      <form id="adminGalleryForm">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="galTitle" class="form-control" required placeholder="Photo Caption/Title">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="galCategory" class="form-control">
+            <option value="Workshops">Workshops</option>
+            <option value="Competitions">Competitions</option>
+            <option value="Seminars">Seminars</option>
+            <option value="Celebrations">Celebrations</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="text" id="galUrl" class="form-control" required placeholder="https://images.unsplash.com/...">
+        </div>
+        <div class="form-group">
+          <label>Short Description</label>
+          <input type="text" id="galDesc" class="form-control" placeholder="Brief details about the picture">
+        </div>
+        <button type="submit" class="btn-card" style="width: 100%; border: none; cursor: pointer; padding: 10px;">Add Photo</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+  <script>
+    checkAuth();
+    loadAdminGallery();
+  </script>
+</body>
+</html>
