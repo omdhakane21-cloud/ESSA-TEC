@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSA - My Certificates</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="../../backend/static/images/terna_logo.jpg" alt="Terna Logo" class="logo">
+            <img src="../../backend/static/images/essa_logo.jpg" alt="ESSA Logo" class="logo">
+            <span>ESSA Student Portal</span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="workshops.html">Workshops</a>
+            <a href="certificates.html" class="active">My Certificates</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>My Workshop Certificates</h1>
+        <p class="subtitle">Download verified certificates for workshops organized by Electronics Engineering Students Association (Terna College of Engineering).</p>
+        
+        <div class="certificate-grid" id="certificateList">
+            <!-- Dynamic Certificate Card -->
+            <div class="cert-card">
+                <div class="cert-badge">Completed</div>
+                <h3>Multi-layer PCB Design & High-Speed Signal Integrity</h3>
+                <p class="cert-date">Held: September 2026</p>
+                <button class="btn-download" onclick="downloadCert(1, 101)">Download Certificate (PDF)</button>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-badge">Completed</div>
+                <h3>8051 Microcontroller & Embedded Systems</h3>
+                <p class="cert-date">Held: August 2026</p>
+                <button class="btn-download" onclick="downloadCert(2, 101)">Download Certificate (PDF)</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Electronics Engineering Students Association (ESSA), Terna College of Engineering.</p>
+    </footer>
+
+    <script>
+        const API_BASE_URL = "http://localhost:8000";
+
+        function downloadCert(workshopId, studentId) {
+            window.open(`${API_BASE_URL}/certificates/download/${workshopId}/${studentId}`, '_blank');
+        }
+    </script>
+</body>
+</html>

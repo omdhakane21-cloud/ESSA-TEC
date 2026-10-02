@@ -1,53 +1,44 @@
-# ESSA - Electronics Engineering Students Association Web Portal
-### Terna College of Engineering | Department of Electronics Engineering
+# ESSA Certificate Sub-Branch Module
 
-A modern web application built according to the exact architectural specifications and header/footer design standards.
+This module implements the Workshop Certificate allocation sub-branch for the Electronics Engineering Students Association (ESSA) website, Terna College of Engineering.
 
----
-
-## 🌟 Key Features
-1. **Accurate Header Strip**:
-   - Left: **ESSA** logo + *"Electronics Engineering Students Association"*
-   - Right: **Terna College of Engineering** + *"Deprtmnt of Electronics Engineering"* + College Emblem
-2. **Navigation Bar**: Sticky maroon strip (`#7A1C2E`) linking Home, About, Events, Gallery, Team, Contact & Admin Portal.
-3. **Activity Showcase**: Multi-photo carousel highlighting PCB fabrication, hackathons, and technical symposia.
-4. **About Section**: Full department background, mission, vision, and core statistics.
-5. **Leadership & Mentors**: Profiles for HOD, Faculty Advisor, and ESSA President with LinkedIn and Instagram integration.
-6. **Support & Help Desk (Maroon Bottom Strip)**: Coordinator names, roles, direct phone numbers, and official emails.
-7. **Full Admin Management Suite**:
-   - 🔐 Secure JWT Auth (`admin` / `admin123`)
-   - 📊 Dashboard Statistics
-   - 📅 Events Manager (Add, View, Edit, Delete, Image URL)
-   - 👥 Team Manager (Add, View, Edit, Delete)
-   - 🖼️ Gallery Manager (Add, View, Delete)
-   - 📞 Coordinators Editor (Live updates bottom strip contacts)
-   - 📝 Event Registrations (Student signups & CSV export)
-   - 💬 Contact Messages Inbox
-
----
-
-## 🚀 Running the Project
-
-### 1. Backend (FastAPI + SQLAlchemy)
-```bash
-cd backend
-python -m venv venv
-# On Windows: venv\Scripts\activate
-# On Linux/macOS: source venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+## Folder Structure
+```text
+essa_certificate_module/
+├── backend/
+│   ├── main.py              # FastAPI application entry point
+│   ├── requirements.txt     # Python dependencies
+│   ├── routers/
+│   │   └── certificates.py  # Certificate generation endpoint
+│   ├── utils/
+│   │   └── certificate_gen.py # ReportLab PDF generator script
+│   └── static/
+│       └── images/          # Place terna_logo.jpg and essa_logo.jpg here
+└── frontend/
+    ├── templates/
+    │   └── certificates.html # Student certificates dashboard view
+    └── static/
+        └── css/
+            └── style.css    # Portal stylesheet
 ```
-Interactive API docs available at: `http://127.0.0.1:8000/docs`
 
-### 2. Frontend (HTML5 / Vanilla JS / CSS3)
-Open `frontend/index.html` in any browser or run a simple local web server:
-```bash
-cd frontend
-python -m http.server 3000
-```
-Visit `http://localhost:3000/index.html`
+## Setup & Execution
 
-### 3. Admin Login
-- URL: `http://localhost:3000/login.html`
-- **Username**: `admin`
-- **Password**: `admin123`
+### 1. Backend Setup
+1. Navigate to the `backend/` folder:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Place your Terna College logo and ESSA logo as `terna_logo.jpg` and `essa_logo.jpg` inside `backend/static/images/`.
+4. Run the FastAPI server:
+   ```bash
+   uvicorn main:app --reload --port 8000
+   ```
+
+### 2. Frontend Setup
+1. Open `frontend/templates/certificates.html` directly in your browser or serve it via a local static server.
+2. The frontend connects to `http://localhost:8000` to fetch and download individual certificates as dynamic PDFs.
