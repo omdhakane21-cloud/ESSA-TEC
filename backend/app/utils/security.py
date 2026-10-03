@@ -4,7 +4,12 @@ from jose import jwt
 from ..config.settings import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
+# Inside your password hashing function
+def get_password_hash(password: str):
+    # Truncate the password to 72 characters to prevent the bcrypt error
+    password_bytes = password.encode("utf-8")[:72]
+    return pwd_context.hash(password_bytes)
+    
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
